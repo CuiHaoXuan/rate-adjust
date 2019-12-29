@@ -1,0 +1,19 @@
+def build(bld):
+    module = bld.create_ns3_module('lyapunov', ['core'])
+    module.source = [
+    'model/ly-producer.cc',
+    'model/ly-queue.cc',
+    'model/ly-trace.cc',
+        ]
+
+    module.defines = ['NS3_ASSERT_ENABLE', 'NS3_LOG_ENABLE']
+    module.cxxflags = ['-std=c++11', '-g']
+    headers = bld(features='ns3header')
+    headers.module = 'lyapunov'
+    headers.source = [
+    'model/ly-consumer.h',
+    'model/ly-producer.h',
+    'model/ly-queue.h',
+    'model/ly-trace.h',
+       ]
+
